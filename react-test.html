@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Function React</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+      body {
+        font-family: sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      #root {
+        text-align: center;
+        background: #f4f4f4;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      button {
+        margin: 5px;
+        padding: 10px 20px;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: white;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+
+      /* Biar tombol reset turun ke bawah dan warnanya beda */
+      .btn-reset {
+        display: block;
+        margin: 10px auto 0;
+        background-color: #dc3545;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      const container = document.getElementById("root");
+      const root = ReactDOM.createRoot(container);
+
+      function HomePage() {
+        const [number, setNumber] = React.useState(0);
+
+        function handleClickPlus() {
+          setNumber(number + 1);
+        }
+
+        function handleClickMinus() {
+          setNumber(number - 1);
+        }
+
+        function resetHandle() {
+          setNumber(0);
+        }
+
+        return (
+          <>
+            <h3>Counter App - ReactJS</h3>
+            <div>
+              <button onClick={handleClickMinus}>-</button>
+              <span>({number})</span>
+              <button onClick={handleClickPlus}>+</button>
+            </div>
+
+            <button onClick={resetHandle}>Reset</button>
+          </>
+        );
+      }
+      root.render(<HomePage />);
+    </script>
+  </body>
+</html>
